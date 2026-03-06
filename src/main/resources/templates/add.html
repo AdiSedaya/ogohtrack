@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>OgohTrack</title>
+
+<!-- Icon website -->
+<link rel="icon" type="image/png" href="/ogohtrack.png">
+
+<style>
+
+/* Background halaman */
+
+body{
+margin:0;
+font-family:Arial;
+background:url('/background.jpg') no-repeat center center fixed;
+background-size:cover;
+color:white;
+}
+
+/* Container form di tengah halaman */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+/* Card form dengan efek glass */
+
+.form-card{
+
+width:400px;
+
+padding:30px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(15px);
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+
+}
+
+/* Judul form */
+
+.title{
+text-align:center;
+margin-bottom:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+/* Group input form */
+
+.form-group{
+margin-bottom:12px;
+}
+
+.form-group label{
+display:block;
+font-size:13px;
+margin-bottom:4px;
+opacity:0.9;
+}
+
+/* Input dan textarea */
+
+input,
+textarea{
+
+width:100%;
+
+padding:9px;
+
+border:none;
+
+border-radius:8px;
+
+background:white;
+
+color:#333;
+
+font-size:14px;
+
+}
+
+/* Ukuran textarea */
+
+textarea{
+resize:none;
+height:60px;
+}
+
+/* Input upload gambar */
+
+input[type="file"]{
+background:transparent;
+color:white;
+font-size:13px;
+}
+
+/* Tombol simpan data */
+
+.submit-btn{
+
+width:100%;
+
+padding:11px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#3b82f6;
+
+color:white;
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.submit-btn:hover{
+background:#2563eb;
+transform:scale(1.03);
+}
+
+/* Tombol kembali ke dashboard */
+
+.back-btn{
+
+display:block;
+
+margin-top:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+padding:10px;
+
+border-radius:10px;
+
+background:rgba(255,255,255,0.25);
+
+color:white;
+
+transition:0.2s;
+
+}
+
+.back-btn:hover{
+background:rgba(255,255,255,0.35);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form-card">
+
+<!-- Pesan error jika input gagal -->
+<p style="color:red" th:if="${error}" th:text="${error}"></p>
+
+<div class="title">
+Tambah Ogoh-Ogoh
+</div>
+
+<!-- Form input data ogoh-ogoh -->
+<form action="/save" method="post" enctype="multipart/form-data">
+
+<div class="form-group">
+<label>Nama Ogoh</label>
+<input type="text" name="namaProyek" required>
+</div>
+
+<div class="form-group">
+<label>Tema</label>
+<input type="text" name="tema">
+</div>
+
+<div class="form-group">
+<label>Tahun</label>
+<input type="number" name="tahun" required>
+</div>
+
+<div class="form-group">
+<label>Deskripsi</label>
+<textarea name="deskripsi" required ></textarea>
+</div>
+
+<div class="form-group">
+<label>Gambar</label>
+<input type="file" name="gambar" accept="image/*" required>
+</div>
+
+<div class="form-group">
+<label>Nama STT</label>
+<input type="text" name="namaStt">
+</div>
+
+<div class="form-group">
+<label>Ketua STT</label>
+<input type="text" name="ketuaStt" required>
+</div>
+
+<!-- Tombol simpan -->
+<button class="submit-btn">
+Simpan
+</button>
+
+</form>
+
+<!-- Tombol kembali -->
+<a href="/dashboard" class="back-btn">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

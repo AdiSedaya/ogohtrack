@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Judul halaman -->
+<title>Detail Ogoh-Ogoh</title><title>OgohTrack</title>
+
+<!-- Icon website -->
+<link rel="icon" type="image/png" href="/ogohtrack.png">
+
+<style>
+
+/* Background halaman */
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+background:url('/Background.jpg') center/cover no-repeat fixed;
+}
+
+/* Overlay gelap untuk meningkatkan kontras */
+
+.overlay{
+background:rgba(0,0,0,0.55);
+min-height:100vh;
+padding:40px;
+}
+
+/* Container utama detail ogoh-ogoh */
+
+.container{
+max-width:1100px;
+margin:auto;
+display:flex;
+gap:40px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:30px;
+}
+
+/* Box gambar ogoh-ogoh */
+
+.image-box img{
+width:350px;
+border-radius:15px;
+}
+
+/* Informasi ogoh-ogoh */
+
+.info{
+flex:1;
+}
+
+/* Judul ogoh-ogoh */
+
+.title{
+font-size:32px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+/* Metadata ogoh-ogoh */
+
+.meta{
+margin-bottom:12px;
+font-size:15px;
+opacity:0.9;
+}
+
+/* Deskripsi ogoh-ogoh */
+
+.deskripsi{
+margin-top:20px;
+line-height:1.6;
+}
+
+/* Container tombol aksi */
+
+.buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* Style tombol umum */
+
+.btn{
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-size:14px;
+transition:0.3s;
+}
+
+/* Tombol kembali */
+
+.btn-dashboard{
+background:#3b82f6;
+}
+
+/* Tombol next ogoh-ogoh */
+
+.btn-next{
+background:#10b981;
+}
+
+/* Tombol download PDF */
+
+.btn-pdf{
+background:#f59e0b;
+}
+
+.btn:hover{
+transform:scale(1.05);
+opacity:0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<!-- Gambar ogoh-ogoh -->
+
+<div class="image-box">
+<img th:src="@{'/uploads/' + ${project.gambar}}">
+</div>
+
+<!-- Informasi detail ogoh-ogoh -->
+
+<div class="info">
+
+<div class="title" th:text="${project.namaProyek}"></div>
+
+<div class="meta">
+Tema: <span th:text="${project.tema}"></span>
+</div>
+
+<div class="meta">
+Tahun: <span th:text="${project.tahun}"></span>
+</div>
+
+<div class="meta">
+STT: <span th:text="${project.namaStt}"></span>
+</div>
+
+<div class="meta">
+Ketua STT: <span th:text="${project.ketuaStt}"></span>
+</div>
+
+<!-- Deskripsi ogoh-ogoh -->
+
+<div class="deskripsi" th:text="${project.deskripsi}"></div>
+
+<!-- Tombol navigasi dan aksi -->
+
+<div class="buttons">
+
+<a href="/dashboard" class="btn btn-dashboard">
+← Kembali ke Dashboard
+</a>
+
+<a th:href="@{/project/pdf/{id}(id=${project.id})}" class="btn btn-pdf">
+Download PDF
+</a>
+
+<a th:href="@{/project/{id}(id=${project.id + 1})}" class="btn btn-next">
+Next Ogoh-Ogoh →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>OgohTrack</title>
+<link rel="icon" type="image/png" href="/ogohtrack.png">
+
+<style>
+
+/* Background halaman */
+
+body{
+margin:0;
+font-family:Arial;
+background:url('/background.jpg') no-repeat center center fixed;
+background-size:cover;
+color:white;
+}
+
+/* Container tengah */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+/* Card form */
+
+.form-card{
+width:400px;
+padding:30px;
+border-radius:20px;
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* Judul */
+
+.title{
+text-align:center;
+margin-bottom:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+/* Form group */
+
+.form-group{
+margin-bottom:12px;
+}
+
+.form-group label{
+display:block;
+font-size:13px;
+margin-bottom:4px;
+opacity:0.9;
+}
+
+/* Input */
+
+input,
+textarea{
+
+width:100%;
+padding:9px;
+
+border:none;
+border-radius:8px;
+
+background:white;
+color:#333;
+
+font-size:14px;
+
+}
+
+/* Textarea */
+
+textarea{
+resize:none;
+height:60px;
+}
+
+/* File input */
+
+input[type="file"]{
+background:transparent;
+color:white;
+font-size:13px;
+}
+
+/* Button update */
+
+.submit-btn{
+
+width:100%;
+padding:11px;
+
+margin-top:15px;
+
+border:none;
+border-radius:10px;
+
+background:#f59e0b;
+
+color:white;
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.submit-btn:hover{
+background:#d97706;
+transform:scale(1.03);
+}
+
+/* Tombol kembali */
+
+.back-btn{
+
+display:block;
+
+margin-top:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+padding:10px;
+
+border-radius:10px;
+
+background:rgba(255,255,255,0.25);
+
+color:white;
+
+transition:0.2s;
+
+}
+
+.back-btn:hover{
+background:rgba(255,255,255,0.35);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form-card">
+
+<div class="title">
+Edit Ogoh-Ogoh
+</div>
+
+<form th:action="@{/update}" method="post" enctype="multipart/form-data">
+
+<input type="hidden" name="id" th:value="${project.id}">
+
+<div class="form-group">
+<label>Nama Ogoh</label>
+<input type="text" name="namaProyek" th:value="${project.namaProyek}" required>
+</div>
+
+<div class="form-group">
+<label>Tema</label>
+<input type="text" name="tema" th:value="${project.tema}">
+</div>
+
+<div class="form-group">
+<label>Tahun</label>
+<input type="number" name="tahun" th:value="${project.tahun}" required>
+</div>
+
+<div class="form-group">
+<label>Deskripsi</label>
+<textarea name="deskripsi" th:text="${project.deskripsi}" required></textarea>
+</div>
+
+<div class="form-group">
+<label>Gambar Baru</label>
+<input type="file" name="gambar" accept="image/*">
+</div>
+
+<div class="form-group">
+<label>Nama STT</label>
+<input type="text" name="namaStt" th:value="${project.namaStt}">
+</div>
+
+<div class="form-group">
+<label>Ketua STT</label>
+<input type="text" name="ketuaStt" th:value="${project.ketuaStt}" required>
+</div>
+
+<button class="submit-btn">
+Update
+</button>
+
+</form>
+
+<a href="/dashboard" class="back-btn">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

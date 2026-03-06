@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Judul halaman -->
+<title>OgohTrack</title>
+
+<!-- Icon website -->
+<link rel="icon" type="image/png" href="/ogohtrack.png">
+
+<style>
+
+/* Reset dasar */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+/* Background halaman */
+
+body{
+height:100vh;
+background-image:url('/Background.jpg');
+background-size:cover;
+background-position:center;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(10px);
+}
+
+/* Logo aplikasi */
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:white;
+}
+
+/* Menu kanan navbar */
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.user-profile{
+display:flex;
+align-items:center;
+gap:8px;
+background:rgba(255,255,255,0.3);
+padding:6px 14px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+}
+
+/* Tombol logout */
+
+.logout-btn{
+background:#ff4d4d;
+padding:8px 16px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+}
+
+/* CARD PROFILE */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:80vh;
+}
+
+.card{
+width:420px;
+background:rgba(255,255,255,0.95);
+padding:35px;
+border-radius:16px;
+box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* Judul form */
+
+.card h2{
+text-align:center;
+margin-bottom:25px;
+color:#333;
+}
+
+/* INPUT */
+
+label{
+font-weight:600;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:6px;
+margin-bottom:18px;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:14px;
+}
+
+input:focus{
+outline:none;
+border-color:#2c7be5;
+}
+
+/* BUTTON SIMPAN */
+
+button{
+width:100%;
+padding:12px;
+background:#2c7be5;
+color:white;
+border:none;
+border-radius:8px;
+font-size:15px;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+background:#1a5ed6;
+}
+
+/* BACK BUTTON */
+
+.back{
+display:block;
+text-align:center;
+margin-top:15px;
+text-decoration:none;
+color:#555;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">
+OgohTrack
+</div>
+
+<div class="nav-right">
+
+<!-- Profil user -->
+
+<a href="/profile" class="user-profile">
+👤 <span th:text="${user.nama}"></span>
+</a>
+
+<!-- Logout -->
+
+<a href="/logout" class="logout-btn">
+Logout
+</a>
+
+</div>
+
+</div>
+
+<!-- FORM EDIT PROFILE -->
+
+<div class="container">
+
+<div class="card">
+
+<h2>Edit Profile</h2>
+
+<!-- Form update profil -->
+
+<form action="/profile/update" method="post">
+
+<label>Nama</label>
+<input type="text" name="nama" th:value="${user.nama}">
+
+<label>Nomor HP</label>
+<input type="text" name="hp" th:value="${user.hp}">
+
+<button type="submit">
+Simpan Perubahan
+</button>
+
+</form>
+
+<!-- Tombol kembali -->
+
+<a href="/dashboard" class="back">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
