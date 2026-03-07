@@ -43,11 +43,6 @@ public WebController(ProjectService projectService, UserService userService) {
     this.userService = userService;
 }
 
-@GetMapping("/")
-public String home() {
-    return "login";
-}
-
 /* Menampilkan halaman dashboard */
 @GetMapping("/dashboard")
 public String dashboard(Model model, HttpSession session){
