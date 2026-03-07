@@ -223,7 +223,7 @@ public String saveProject(
 
     String fileName = gambar.getOriginalFilename();
 
-    Path uploadPath = Paths.get("src/main/resources/static/uploads");
+    Path uploadPath = Paths.get(System.getProperty("user.dir"), "uploads"); 
 
     Files.copy(
         gambar.getInputStream(),
@@ -275,7 +275,7 @@ if(!gambar.isEmpty()){
 
 String fileName = gambar.getOriginalFilename();
 
-Path uploadPath = Paths.get("src/main/resources/static/uploads");
+Path uploadPath = Paths.get(System.getProperty("user.dir"), "uploads");
 
 Files.copy(
 gambar.getInputStream(),
